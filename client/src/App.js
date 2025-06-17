@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import AddUser from './addUser/AddUser';
 import './App.css';
+import User from './getUser/User';
+import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import Update from './updateuser/Update';
+import LocomotiveScroll from "locomotive-scroll";
 
 function App() {
+  const locomotiveScroll = new LocomotiveScroll();
+  const route = createBrowserRouter([
+    {
+      path:"/",
+      element: <User />,
+    },
+    {
+      path:"/add",
+      element: <AddUser/>,
+    },
+    {
+      path:"/update/:id",
+      element: <Update />,
+    }
+  ]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RouterProvider router ={route}></RouterProvider>
     </div>
   );
 }
