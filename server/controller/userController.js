@@ -11,7 +11,8 @@ export const create = async (req, res) => {
       return res.status(400).json({ message: "User already exists" });
     }
     const savedData = await newUser.save();
-    res.status(200).json(savedData);
+    // res.status(200).json(savedData);
+    res.status(200).json({message: "User Created Successfully."});
   } catch (err) {
     res.status(500).json({ errorMessage: err.message });
   }
@@ -53,7 +54,9 @@ export const update = async (req, res) => {
       new: true,
     });
 
-    res.status(200).json(updatedData);
+    // res.status(200).json(updatedData);
+
+    res.status(200).json({message:"User Updated Successfully."});
   } catch (err) {
     res.status(500).json({ errorMessage: err.message });
   }
